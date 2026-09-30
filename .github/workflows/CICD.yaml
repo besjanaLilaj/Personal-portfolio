@@ -23,7 +23,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            -t myapp:${{ steps.vars.outputs.short_sha }} \
+            -t personalportfolio:${{ steps.vars.outputs.short_sha }} \
             .
 
       - name: Save Docker image
