@@ -8,7 +8,6 @@ on:
 permissions:
   contents: write
 
-
 jobs:
   build:
     runs-on: self-hosted
@@ -19,22 +18,35 @@ jobs:
 
       - name: Set short SHA
         id: vars
-        run: echo "short_sha=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+        shell: pwsh
+        run: |
+          $shortSha = $env:GITHUB_SHA.Substring(0, 7)
+          "short_sha=$shortSha" >> $env:GITHUB_OUTPUT
 
       - name: Build Docker image
+        shell: pwsh
         run: |
-          docker build -t personalportfolio:${{ steps.vars.outputs.short_sha }} .
+          docker build -t "personalportfolio:${{ steps.vars.outputs.short_sha }}" .
 
       - name: Save Docker image
+        shell: pwsh
         run: |
-          docker save myapp:${{ steps.vars.outputs.short_sha }} \
-            | gzip > myapp-${{ steps.vars.outputs.short_sha }}.tar.gz
+          docker save "personalportfolio:${{ steps.vars.outputs.short_sha }}" `
+            -o "personalportfolio-${{ steps.vars.outputs.short_sha }}.tar"
+
+      - name: Compress Docker image
+        shell: pwsh
+        run: |
+          Compress-Archive `
+            -Path "personalportfolio-${{ steps.vars.outputs.short_sha }}.tar" `
+            -DestinationPath "personalportfolio-${{ steps.vars.outputs.short_sha }}.zip"
 
       - name: Create GitHub Release
+        shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ steps.vars.outputs.short_sha }}" \
-            "myapp-${{ steps.vars.outputs.short_sha }}.tar.gz" \
-            --title "Release ${{ steps.vars.outputs.short_sha }}" \
+          gh release create "${{ steps.vars.outputs.short_sha }}" `
+            "personalportfolio-${{ steps.vars.outputs.short_sha }}.zip" `
+            --title "Release ${{ steps.vars.outputs.short_sha }}" `
             --generate-notes
