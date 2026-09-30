@@ -103,11 +103,6 @@ section h3 {
     transform: translateY(-3px);
 }
 
-/* Projects */
-#projects {
-    text-align: center;
-}
-
 /* Contact */
 #contact p {
     margin: 10px 0;
