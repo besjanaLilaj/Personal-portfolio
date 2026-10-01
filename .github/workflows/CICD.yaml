@@ -18,26 +18,45 @@ jobs:
 
       - name: Set short SHA
         id: vars
+        shell: pwsh
         run: |
           $shortSha = $env:GITHUB_SHA.Substring(0, 7)
           "short_sha=$shortSha" >> $env:GITHUB_OUTPUT
 
+      - name: Install GitHub CLI
+        shell: pwsh
+        run: |
+          if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+            winget install --id GitHub.cli --exact --accept-source-agreements --accept-package-agreements
+          }
+
+          $ghPath = "C:\Program Files\GitHub CLI"
+          if (Test-Path $ghPath) {
+            $env:PATH += ";$ghPath"
+          }
+
+          gh --version
+
       - name: Build Docker image
+        shell: pwsh
         run: |
           docker build -t "personalportfolio:${{ steps.vars.outputs.short_sha }}" .
 
       - name: Save Docker image
+        shell: pwsh
         run: |
           docker save "personalportfolio:${{ steps.vars.outputs.short_sha }}" `
             -o "personalportfolio-${{ steps.vars.outputs.short_sha }}.tar"
 
       - name: Compress Docker image
+        shell: pwsh
         run: |
           Compress-Archive `
             -Path "personalportfolio-${{ steps.vars.outputs.short_sha }}.tar" `
             -DestinationPath "personalportfolio-${{ steps.vars.outputs.short_sha }}.zip"
 
       - name: Create GitHub Release
+        shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
