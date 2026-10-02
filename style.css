@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -14,15 +13,23 @@ body {
     line-height: 1.7;
     color: #1e293b;
     background: #f8fafc;
+}
+
+/* ========================================
+   Header
+======================================== */
 
 header {
     min-height: 55vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     text-align: center;
     padding: 60px 20px;
+
     background: linear-gradient(135deg, #0f172a, #1e3a8a);
     color: white;
 }
@@ -30,6 +37,7 @@ header {
 header h1 {
     font-size: clamp(2.8rem, 7vw, 5rem);
     font-weight: 800;
+
     letter-spacing: -2px;
     margin-bottom: 15px;
 }
@@ -65,9 +73,12 @@ nav {
 nav a {
     text-decoration: none;
     color: #334155;
+
     font-weight: 600;
+
     padding: 8px 16px;
     border-radius: 8px;
+
     transition: all 0.25s ease;
 }
 
@@ -86,7 +97,7 @@ main {
 }
 
 /* ========================================
-   Sections
+   General Sections
 ======================================== */
 
 section {
@@ -100,11 +111,13 @@ section h2 {
 
     font-size: 2rem;
     color: #0f172a;
+
     margin-bottom: 30px;
 }
 
 section h2::after {
     content: "";
+
     position: absolute;
     left: 0;
     bottom: -8px;
@@ -128,12 +141,17 @@ section p {
 #about {
     max-width: 850px;
     margin: auto;
+
     text-align: center;
 }
 
 #about h2::after {
     left: 50%;
     transform: translateX(-50%);
+}
+
+#about p {
+    margin-bottom: 18px;
 }
 
 /* ========================================
@@ -144,14 +162,19 @@ section p {
     text-align: center;
 }
 
+#skills h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 #skills ul {
     list-style: none;
 
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
 
+    gap: 15px;
     margin-top: 20px;
 }
 
@@ -173,8 +196,10 @@ section p {
 
 #skills li:hover {
     transform: translateY(-4px);
+
     background: #2563eb;
     color: white;
+
     border-color: #2563eb;
 }
 
@@ -192,7 +217,8 @@ section p {
 
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
 }
 
 #projects article:hover {
@@ -203,7 +229,9 @@ section p {
 
 #projects article h3 {
     color: #2563eb;
+
     font-size: 1.4rem;
+
     margin-bottom: 12px;
 }
 
@@ -220,10 +248,90 @@ section p {
     transform: translateX(-50%);
 }
 
+#education article {
+    background: white;
+
+    padding: 25px 30px;
+
+    margin: 20px auto;
+
+    max-width: 750px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+#education article:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.09);
+}
+
 #education h3 {
     font-size: 1.4rem;
+
     color: #0f172a;
+
     margin-bottom: 8px;
+}
+
+#education p {
+    margin: 0;
+}
+
+/* ========================================
+   Interests
+======================================== */
+
+#interests {
+    text-align: center;
+}
+
+#interests h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#interests article {
+    background: white;
+
+    padding: 30px;
+
+    margin: 20px auto;
+
+    max-width: 850px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+#interests article:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.09);
+}
+
+#interests h3 {
+    color: #2563eb;
+
+    font-size: 1.35rem;
+
+    margin-bottom: 10px;
+}
+
+#interests p {
+    max-width: 750px;
+    margin: 0 auto;
 }
 
 /* ========================================
@@ -236,6 +344,7 @@ section p {
     background: white;
 
     padding: 60px 30px;
+
     margin-bottom: 50px;
 
     border-radius: 20px;
@@ -254,7 +363,9 @@ section p {
 
 #contact a {
     color: #2563eb;
+
     font-weight: 600;
+
     text-decoration: none;
 }
 
@@ -268,6 +379,7 @@ section p {
 
 .social-links {
     text-align: center;
+
     padding: 40px 0 80px;
 }
 
@@ -292,6 +404,7 @@ section p {
     border-radius: 10px;
 
     text-decoration: none;
+
     font-weight: 600;
 
     transition: all 0.25s ease;
@@ -299,6 +412,7 @@ section p {
 
 .social-links a:hover {
     background: #2563eb;
+
     transform: translateY(-3px);
 }
 
@@ -312,6 +426,7 @@ footer {
     padding: 30px 20px;
 
     background: #0f172a;
+
     color: #94a3b8;
 
     font-size: 0.9rem;
@@ -346,8 +461,77 @@ footer {
         padding: 7px 10px;
     }
 
+    main {
+        width: 90%;
+    }
+
     section {
         padding: 65px 0;
     }
 
     section h2 {
+        font-size: 1.8rem;
+    }
+
+    section p {
+        font-size: 1rem;
+    }
+
+    #projects article,
+    #education article,
+    #interests article {
+        padding: 22px;
+    }
+
+    #contact {
+        padding: 45px 20px;
+    }
+
+    .social-links {
+        padding-bottom: 60px;
+    }
+}
+
+/* ========================================
+   Small Mobile Screens
+======================================== */
+
+@media (max-width: 480px) {
+
+    header {
+        min-height: 45vh;
+    }
+
+    header h1 {
+        font-size: 2.4rem;
+        letter-spacing: -1px;
+    }
+
+    header p {
+        font-size: 0.95rem;
+    }
+
+    nav a {
+        font-size: 0.82rem;
+        padding: 6px 8px;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    section h2 {
+        font-size: 1.6rem;
+    }
+
+    #skills li {
+        padding: 10px 17px;
+        font-size: 0.9rem;
+    }
+
+    .social-links a {
+        display: block;
+        margin: 10px auto;
+        max-width: 220px;
+    }
+}
